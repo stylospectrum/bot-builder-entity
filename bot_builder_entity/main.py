@@ -16,7 +16,7 @@ app.add_middleware(ResponseInterceptor)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -24,5 +24,9 @@ app.add_middleware(
 
 
 def start():
-    uvicorn.run("bot_builder_entity.main:app",
-                host="0.0.0.0", port=int(settings.PORT), reload=True)
+    uvicorn.run(
+        "bot_builder_entity.main:app",
+        host="0.0.0.0",
+        port=int(settings.PORT),
+        reload=True,
+    )

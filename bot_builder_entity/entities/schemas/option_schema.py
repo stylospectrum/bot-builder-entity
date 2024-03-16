@@ -12,13 +12,10 @@ if TYPE_CHECKING:
 class Option(SQLModel, table=True):
     __tablename__ = "option"
 
-    id: Optional[uuid.UUID] = Field(
-        default_factory=uuid.uuid4, primary_key=True)
+    id: Optional[uuid.UUID] = Field(default_factory=uuid.uuid4, primary_key=True)
     entity_id: uuid.UUID = Field(foreign_key="entity.id")
     name: str = Field(nullable=False)
-    created_at: datetime = Field(
-        default_factory=datetime.utcnow, nullable=False)
+    created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
 
-    entity: Optional['Entity'] = Relationship(back_populates="options")
-    synonyms: Optional[list['Synonym']] = Relationship(
-        back_populates="option")
+    entity: Optional["Entity"] = Relationship(back_populates="options")
+    synonyms: Optional[list["Synonym"]] = Relationship(back_populates="option")
